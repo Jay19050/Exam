@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minimal Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      padding: 0;
+    }
+    h1 {
+      font-size: 28px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Code Solutions</h1>
+  <p>Paste your code solutions and I'll insert them here.</p>
+
+  <!-- Your solutions will appear below -->
+  <div id="solutions">
+    <h2>C++ Queue Program</h2>
+    <pre>
+#include&lt;conio.h&gt;
+#include&lt;iostream.h&gt;
+
+class queue
+{
+    private:
+        int f,r,n,*q;
+    public:
+        queue()
+        {
+            f=-1;
+            r=-1;
+            n=5;
+            q= new int[n];
+        }
+        void qinsert(int);
+        void display();
+        int qdelete();
+
+};
+
+void queue:: qinsert(int data)
+{
+    if(r==n-1)
+    {
+        cout&lt;&lt;"Q is Full";
+        return;
+    }
+    r=r+1;
+    q[r]=data;
+    if(f==-1)
+    {
+        f=0;
+    }
+}
+void queue:: display()
+{
+    if(f==-1)
+    {
+        cout&lt;&lt;"Q is Empty";
+        return;
+    }
+    cout&lt;&lt;"Queue is: ";
+    for(int i=f;i&lt;=r;i++)
+    {
+        cout&lt;&lt;q[i]&lt;&lt;"	";
+    }
+}
+int main()
+{
+    int ch,ele;
+    queue ob1;
+    do
+    {
+        clrscr();
+        cout&lt;&lt;"
+1. QINSERT";
+        cout&lt;&lt;"
+2. QDELETE";
+        cout&lt;&lt;"
+3. DISPLAY";
+        cout&lt;&lt;"
+4. EXIT";
+        cout&lt;&lt;"
+Enter Your Choice: ";
+        cin&gt;&gt;ch;
+
+        switch(ch)
+        {
+            case 1:
+                cout&lt;&lt;"Enter Element: ";
+                cin&gt;&gt;ele;
+                ob1.qinsert(ele);
+                break;
+            case 4:
+                cout&lt;&lt;"Exit";
+                break;
+        }
+        getch();
+    }while(ch!=4);
+    return 0;
+}
+    </pre>
+    <h2>C++ Stack Program</h2>
+    <pre>
+#include &lt;iostream.h&gt;
+#include &lt;conio.h&gt;
+
+class stack
+{
+private:
+    int top, n, *s;
+
+public:
+    stack()
+    {
+        top = -1;
+        n = 5;
+        s = new int[n];
+    }
+
+    void push(int);
+    int pop();
+    int peep(int);
+    void change(int, int);
+    void display();
+};
+
+void stack::push(int data)
+{
+    if (top == n - 1)
+    {
+        cout &lt;&lt; "
+Stack is Overflow";
+        return;
+    }
+    top = top + 1;
+    s[top] = data;
+}
+
+int stack::pop()
+{
+    int data;
+    if (top == -1)
+    {
+        cout &lt;&lt; "
+Stack is Underflow";
+        return 0;
+    }
+    data = s[top];
+    top = top - 1;
+    return data;
+}
+
+int stack::peep(int p)
+{
+    if (top - p + 1 &lt; 0)
+    {
+        cout &lt;&lt; "
+Stack is Underflow on Peep";
+        return 0;
+    }
+    return s[top - p + 1];
+}
+
+void stack::change(int p, int x)
+{
+    if (top - p + 1 &lt; 0)
+    {
+        cout &lt;&lt; "
+Stack is Underflow on Change";
+        return;
+    }
+    s[top - p + 1] = x;
+}
+
+void stack::display()
+{
+    if (top == -1)
+    {
+        cout &lt;&lt; "
+Stack is Underflow";
+        return;
+    }
+    for (int i = top; i &gt;= 0; i--)
+        cout &lt;&lt; endl &lt;&lt; s[i];
+}
+
+int main()
+{
+    int ch, ele, p;
+    stack obj;
+
+    do
+    {
+        clrscr();
+        cout &lt;&lt; "
+---- STACK MENU ----
+";
+        cout &lt;&lt; "1. PUSH
+";
+        cout &lt;&lt; "2. POP
+";
+        cout &lt;&lt; "3. PEEP
+";
+        cout &lt;&lt; "4. CHANGE
+";
+        cout &lt;&lt; "5. DISPLAY
+";
+        cout &lt;&lt; "6. EXIT
+";
+        cout &lt;&lt; "Enter Choice: ";
+        cin &gt;&gt; ch;
+
+        switch (ch)
+        {
+        case 1:
+            cout &lt;&lt; "
+Enter Element: ";
+            cin &gt;&gt; ele;
+            obj.push(ele);
+            break;
+
+        case 2:
+            ele = obj.pop();
+            if (ele != 0)
+                cout &lt;&lt; "
+Deleted Element is: " &lt;&lt; ele;
+            break;
+
+        case 3:
+            cout &lt;&lt; "
+Enter Position: ";
+            cin &gt;&gt; p;
+            ele = obj.peep(p);
+            if (ele != 0)
+                cout &lt;&lt; "
+Element at Position " &lt;&lt; p &lt;&lt; " is: " &lt;&lt; ele;
+            break;
+
+        case 4:
+            cout &lt;&lt; "
+Enter Position: ";
+            cin &gt;&gt; p;
+            cout &lt;&lt; "Enter New Element: ";
+            cin &gt;&gt; ele;
+            obj.change(p, ele);
+            break;
+
+        case 5:
+            obj.display();
+            break;
+
+        case 6:
+            cout &lt;&lt; "
+Exiting...";
+            break;
+
+        default:
+            cout &lt;&lt; "
+Wrong Choice!";
+        }
+
+        getch();
+    } while (ch != 6);
+
+    return 0;
+}
+    </pre>
+  </div>
+  <h2>Python SQLite3 Program</h2>
+  <pre>
+"""
+W.A.P. to create a table in sqlite3 using python code and insert
+5 records and read a table data from sqlite3 and convert it
+into csv file.
+"""
+
+import sqlite3
+import pandas as pd
+
+cn = sqlite3.connect(r"C:/sqlite3/itech2025_10.db")
+
+cn.execute("""
+    create table emp
+    (
+        eid int primary key,
+        ename varchar(10),
+        city varchar(10),
+        salary int
+    )
+""")
+
+cn.execute("insert into emp values(1, 'hitesh', 'valsad', 5000)")
+cn.execute("insert into emp values(2, 'dev', 'vapi', 6000)")
+cn.execute("insert into emp values(3, 'dharm', 'surat', 7000)")
+cn.execute("insert into emp values(4, 'vishwa', 'mumbai', 8000)")
+cn.execute("insert into emp values(5, 'shubham', 'pardi', 9000)")
+
+cn.commit()
+print("Record Inserted Successfully")
+
+mydf = pd.read_sql("select * from emp", cn)
+print(mydf)
+
+mydf.to_csv("D:/emp21.csv")
+print("CSV File Created Successfully")
+
+cn.close()
+  </pre>
+  <h2>Python CSV to SQLite3 Program</h2>
+  <pre>
+"""
+W.A.P. to convert CSV file to sqlite3 table
+"""
+
+import sqlite3
+import pandas as pd
+
+# Read CSV file
+mydf = pd.read_csv("D:/stud2.csv")
+print(mydf)
+
+# Add total marks
+mydf["tot"] = mydf["m1"] + mydf["m2"] + mydf["m3"]
+print(mydf)
+
+# Add percentage
+mydf["pct"] = mydf["tot"] / 3
+print(mydf)
+
+# Save to sqlite3
+cn = sqlite3.connect("C:/sqlite3/itech2025_10.db")
+
+mydf.to_sql('student', cn, if_exists='replace', index=False)
+print("Table Created Successfully")
+  </pre>
+  <h2>HTML Register Page</h2>
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Register Page&lt;/title&gt;
+
+    &lt;link href=&quot;css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;container-fluid p-5&quot;&gt;
+
+    &lt;h2 class=&quot;text-center mb-4&quot;&gt;Register&lt;/h2&gt;
+
+    &lt;form class=&quot;w-100&quot;&gt;
+
+        &lt;div class=&quot;mb-3&quot;&gt;
+            &lt;label class=&quot;form-label&quot;&gt;Full Name&lt;/label&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Enter full name&quot; required&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;mb-3&quot;&gt;
+            &lt;label class=&quot;form-label&quot;&gt;Email Address&lt;/label&gt;
+            &lt;input type=&quot;email&quot; class=&quot;form-control&quot; placeholder=&quot;Enter email&quot; required&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;mb-3&quot;&gt;
+            &lt;label class=&quot;form-label&quot;&gt;Password&lt;/label&gt;
+            &lt;input type=&quot;password&quot; class=&quot;form-control&quot; placeholder=&quot;Enter password&quot; required&gt;
+        &lt;/div&gt;
+
+        &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary w-100 py-2&quot;&gt;Register&lt;/button&gt;
+    &lt;/form&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</body>
+</html>
