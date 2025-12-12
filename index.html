@@ -205,20 +205,13 @@ int main()
     {
         clrscr();
         cout &lt;&lt; "
----- STACK MENU ----
-";
-        cout &lt;&lt; "1. PUSH
-";
-        cout &lt;&lt; "2. POP
-";
-        cout &lt;&lt; "3. PEEP
-";
-        cout &lt;&lt; "4. CHANGE
-";
-        cout &lt;&lt; "5. DISPLAY
-";
-        cout &lt;&lt; "6. EXIT
-";
+---- STACK MENU ----";
+        cout &lt;&lt; "1. PUSH";
+        cout &lt;&lt; "2. POP";
+        cout &lt;&lt; "3. PEEP";
+        cout &lt;&lt; "4. CHANGE";
+        cout &lt;&lt; "5. DISPLAY";
+        cout &lt;&lt; "6. EXIT";
         cout &lt;&lt; "Enter Choice: ";
         cin &gt;&gt; ch;
 
@@ -262,13 +255,11 @@ Enter Position: ";
             break;
 
         case 6:
-            cout &lt;&lt; "
-Exiting...";
+            cout &lt;&lt; "Exiting...";
             break;
 
         default:
-            cout &lt;&lt; "
-Wrong Choice!";
+            cout &lt;&lt; "Wrong Choice!";
         }
 
         getch();
@@ -301,11 +292,11 @@ cn.execute("""
     )
 """)
 
-cn.execute("insert into emp values(1, 'hitesh', 'valsad', 5000)")
-cn.execute("insert into emp values(2, 'dev', 'vapi', 6000)")
-cn.execute("insert into emp values(3, 'dharm', 'surat', 7000)")
-cn.execute("insert into emp values(4, 'vishwa', 'mumbai', 8000)")
-cn.execute("insert into emp values(5, 'shubham', 'pardi', 9000)")
+cn.execute("insert into emp values(1, 'Jay', 'valsad', 5000)")
+cn.execute("insert into emp values(2, 'Swapnil', 'vapi', 6000)")
+cn.execute("insert into emp values(3, 'Parthiv', 'surat', 7000)")
+cn.execute("insert into emp values(4, 'Krishna', 'mumbai', 8000)")
+cn.execute("insert into emp values(5, 'Dhvani', 'pardi', 9000)")
 
 cn.commit()
 print("Record Inserted Successfully")
