@@ -76,6 +76,30 @@ void queue:: display()
         cout&lt;&lt;q[i]&lt;&lt;"	";
     }
 }
+int queue::qdelete()
+{
+    int data;
+
+    if (f == -1)
+    {
+        cout << "\nQueue is Empty";
+        return 0;
+    }
+
+    data = q[f];
+
+    if (f == r)
+    {
+        f = -1;
+        r = -1;
+    }
+    else
+    {
+        f = f + 1;
+    }
+
+    return data;
+}
 int main()
 {
     int ch,ele;
